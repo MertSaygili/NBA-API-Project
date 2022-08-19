@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:nba_api/model/player_model.dart';
 import 'package:nba_api/model/team_model.dart';
 import 'package:nba_api/service/service.dart';
+import 'package:nba_api/widgets/row_card.dart';
 
 class StartingPageView extends StatefulWidget {
   const StartingPageView({Key? key}) : super(key: key);
@@ -11,9 +12,9 @@ class StartingPageView extends StatefulWidget {
 }
 
 class _StartingPageViewState extends State<StartingPageView> {
-  final String _path = 'https://balldontlie.io/api/v1/teams';
   List<TeamModel>? _teams;
   List<PlayerModel>? _players;
+  List<TeamModel>? x;
 
   @override
   void initState() {
@@ -24,19 +25,24 @@ class _StartingPageViewState extends State<StartingPageView> {
   Future<void> getItems() async {
     _teams = await ServiceApi.getTeamData();
     _players = await ServiceApi.getPlayerData();
-    print(_players);
-    print(_players?[0].first_name);
   }
 
   @override
   Widget build(BuildContext context) {
     return Scaffold(
       body: ListView.builder(
-          itemCount: _players?.length,
+          itemCount: _teams?.length,
           itemBuilder: (context, index) {
-            return ListTile(
-              title: Text(_players?[index].full_name ?? ' '),
-              leading: const Icon(Icons.abc),
+            return Card(
+              child: ListTile(
+                leading: Image.asset(
+                  'assets/team_logos/${_teams?[index].name ?? 'TrailBlazers'}.png',
+                  height: 100,
+                  width: 100,
+                  fit: BoxFit.cover,
+                ),
+                title: Text(_teams?[index].name ?? ''),
+              ),
             );
           }),
     );

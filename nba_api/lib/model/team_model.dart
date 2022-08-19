@@ -13,9 +13,9 @@ class TeamModel {
     return TeamModel(
       id: json['id'] as int,
       city: json['city'] as String,
-      conference: json['city'] as String,
-      full_name: json['city'] as String,
-      name: json['city'] as String,
+      conference: json['conference'] as String,
+      full_name: json['full_name'] as String,
+      name: json['name'] as String,
     );
   }
 

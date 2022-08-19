@@ -93,6 +93,9 @@ flutter:
     - assets/team_logos/TrailBlazers.png
     - assets/team_logos/Warriors.png
     - assets/team_logos/Wizards.png
+    - assets/team_logos/Mavericks.png
+    - assets/team_logos/error.png
+
 
 
   # An image asset can refer to one or more resolution-specific "variants", see
