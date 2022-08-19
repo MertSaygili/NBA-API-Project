@@ -19,7 +19,7 @@ class TeamModel {
     );
   }
 
-  static List<TeamModel> teamModelsFromSnapshot(List snapshot) {
+  static List<TeamModel> teamModelFromSnapshot(List snapshot) {
     return snapshot.map((data) {
       return TeamModel.fromJson(data);
     }).toList();
@@ -27,6 +27,6 @@ class TeamModel {
 
   @override
   String toString() {
-    return 'Recipe {id: ${id.toString()}, city: $city, conference: $conference, full_name: $full_name, name: $name}';
+    return 'Teams {id: ${id.toString()}, city: $city, conference: $conference, full_name: $full_name, name: $name}';
   }
 }
