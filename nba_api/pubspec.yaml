@@ -63,9 +63,37 @@ flutter:
   uses-material-design: true
 
   # To add assets to your application, add an assets section, like this:
-  # assets:
-  #   - images/a_dot_burr.jpeg
-  #   - images/a_dot_ham.jpeg
+  assets:
+    - assets/team_logos/76ers.png
+    - assets/team_logos/Bucks.png
+    - assets/team_logos/Bulls.png
+    - assets/team_logos/Cavaliers.png
+    - assets/team_logos/Celtics.png
+    - assets/team_logos/Clippers.png
+    - assets/team_logos/Grizzlies.png
+    - assets/team_logos/Hawks.png
+    - assets/team_logos/Heat.png
+    - assets/team_logos/Hornets.png
+    - assets/team_logos/Jazz.png
+    - assets/team_logos/Kings.png
+    - assets/team_logos/Knicks.png
+    - assets/team_logos/Lakers.png
+    - assets/team_logos/Magic.png
+    - assets/team_logos/Nets.png
+    - assets/team_logos/Nuggets.png
+    - assets/team_logos/Pacers.png
+    - assets/team_logos/Pelicans.png
+    - assets/team_logos/Pistons.png
+    - assets/team_logos/Raptors.png
+    - assets/team_logos/Rockets.png
+    - assets/team_logos/Spurs.png
+    - assets/team_logos/Suns.png
+    - assets/team_logos/Thunder.png
+    - assets/team_logos/Timberwolves.png
+    - assets/team_logos/TrailBlazers.png
+    - assets/team_logos/Warriors.png
+    - assets/team_logos/Wizards.png
+
 
   # An image asset can refer to one or more resolution-specific "variants", see
   # https://flutter.dev/assets-and-images/#resolution-aware
