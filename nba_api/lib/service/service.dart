@@ -6,7 +6,7 @@ import 'package:nba_api/model/player_model.dart';
 import '../model/team_model.dart';
 
 class ServiceApi {
-  static Future<List<TeamModel>?> getTeamData() async {
+  static Future<List<TeamModel>> getTeamData() async {
     var uri = Uri.https(
       'free-nba.p.rapidapi.com',
       '/teams',
@@ -29,7 +29,7 @@ class ServiceApi {
     return TeamModel.teamModelFromSnapshot(_temp);
   }
 
-  static Future<List<PlayerModel>?> getPlayerData() async {
+  static Future<List<PlayerModel>> getPlayerData() async {
     var uri = Uri.https(
       'free-nba.p.rapidapi.com',
       '/players',
