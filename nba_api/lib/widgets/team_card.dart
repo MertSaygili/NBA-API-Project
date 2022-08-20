@@ -30,7 +30,7 @@ class _CustomTeamCardState extends State<CustomTeamCard> {
   }
 
   Card _customCard(int index, BuildContext context) {
-    double elevation = 15;
+    double elevation = 20;
 
     return Card(
       elevation: elevation,
@@ -54,13 +54,37 @@ class _CustomTeamCardState extends State<CustomTeamCard> {
           Align(
             alignment: Alignment.centerRight,
             child: IconButton(
+              padding: PaddingItems().paddingIcon,
               alignment: Alignment.centerRight,
-              onPressed: () {},
-              icon: const Icon(
-                Icons.arrow_right_alt_rounded,
-                size: 33,
-                color: Colors.blue,
-              ),
+              icon: IconItems().iconNext,
+              onPressed: () {
+                showModalBottomSheet(
+                    context: context,
+                    builder: (context) {
+                      return Column(
+                        mainAxisAlignment: MainAxisAlignment.start,
+                        children: [
+                          SizedBox(
+                            child: CustomImageAsset(
+                              team: widget.teams[index],
+                              logoMainPath: _logoMainPath,
+                            ),
+                          ),
+                          ListTile(
+                            contentPadding: PaddingItems().paddingBottomSheet,
+                            title: Text(
+                              widget.teams[index].full_name.toString(),
+                              style: Theme.of(context).textTheme.headline2,
+                            ),
+                            subtitle: Text(
+                              'Conference: ${widget.teams[index].conference.toString()}\nCity: ${widget.teams[index].city.toString()}',
+                              style: Theme.of(context).textTheme.headline3,
+                            ),
+                          ),
+                        ],
+                      );
+                    });
+              },
             ),
           )
         ],
