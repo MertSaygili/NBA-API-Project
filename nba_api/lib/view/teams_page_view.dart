@@ -4,7 +4,7 @@ import 'package:nba_api/model/team_model.dart';
 import 'package:nba_api/service/service.dart';
 import 'package:nba_api/widgets/row_card.dart';
 
-import '../widgets/team_logo_image.dart';
+import '../constants/constants.dart';
 
 class StartingPageView extends StatefulWidget {
   const StartingPageView({Key? key}) : super(key: key);
@@ -41,14 +41,15 @@ class _StartingPageViewState extends State<StartingPageView>
   Widget build(BuildContext context) {
     return Scaffold(
       body: _isLoading
-          ? Center(
-              child: Container(
-                child: const CircularProgressIndicator(
-                  color: Colors.red,
-                ),
+          ? const Center(
+              child: CircularProgressIndicator(
+                color: Colors.red,
               ),
             )
-          : CustomRowCard(teams: _teams),
+          : Padding(
+              padding: PaddingItems().paddingPage,
+              child: CustomRowCard(teams: _teams),
+            ),
     );
   }
 }

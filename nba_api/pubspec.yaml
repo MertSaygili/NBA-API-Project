@@ -121,7 +121,6 @@ flutter:
 
     - family: Roboto
       fonts: 
-        - asset: assets/fonts/Roboto-Medium.ttf
         - asset: assets/fonts/Roboto-Bold.ttf
 
 

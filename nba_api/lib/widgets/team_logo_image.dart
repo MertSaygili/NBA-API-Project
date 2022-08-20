@@ -2,6 +2,7 @@
 
 import 'package:flutter/material.dart';
 
+import '../constants/constants.dart';
 import '../model/team_model.dart';
 
 class CustomImageAsset extends StatefulWidget {
@@ -36,11 +37,14 @@ class _CustomImageAssetState extends State<CustomImageAsset> {
 
   @override
   Widget build(BuildContext context) {
-    return Image.asset(
-      getPath(),
-      height: 100,
-      width: 100,
-      fit: BoxFit.fill,
+    return Padding(
+      padding: PaddingItems().paddingImage,
+      child: Image.asset(
+        getPath(),
+        height: 100,
+        width: 100,
+        fit: BoxFit.fill,
+      ),
     );
   }
 }
