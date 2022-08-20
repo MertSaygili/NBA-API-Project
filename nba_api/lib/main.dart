@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:nba_api/theme/custom_theme.dart';
-import 'package:nba_api/view/teams_page.dart';
+import 'package:nba_api/view/teams_page_view.dart';
 
 void main() {
   runApp(const MyApp());

@@ -4,16 +4,16 @@ import 'package:nba_api/widgets/team_logo_image.dart';
 
 import '../constants/constants.dart';
 
-class CustomRowCard extends StatefulWidget {
-  const CustomRowCard({Key? key, required this.teams}) : super(key: key);
+class CustomTeamCard extends StatefulWidget {
+  const CustomTeamCard({Key? key, required this.teams}) : super(key: key);
 
   final List<TeamModel> teams;
 
   @override
-  State<CustomRowCard> createState() => _CustomRowCardState();
+  State<CustomTeamCard> createState() => _CustomTeamCardState();
 }
 
-class _CustomRowCardState extends State<CustomRowCard> {
+class _CustomTeamCardState extends State<CustomTeamCard> {
   final String _logoMainPath = 'assets/team_logos/';
 
   @override
@@ -23,10 +23,7 @@ class _CustomRowCardState extends State<CustomRowCard> {
       itemBuilder: (context, index) {
         return Padding(
           padding: PaddingItems().paddingCard,
-          child: GestureDetector(
-            onTap: () {},
-            child: _customCard(index, context),
-          ),
+          child: _customCard(index, context),
         );
       },
     );
@@ -38,6 +35,7 @@ class _CustomRowCardState extends State<CustomRowCard> {
     return Card(
       elevation: elevation,
       child: Row(
+        mainAxisAlignment: MainAxisAlignment.spaceBetween,
         children: [
           Align(
             alignment: Alignment.centerLeft,
@@ -47,12 +45,24 @@ class _CustomRowCardState extends State<CustomRowCard> {
             ),
           ),
           Align(
-            alignment: Alignment.centerRight,
+            alignment: Alignment.center,
             child: Text(
               widget.teams[index].full_name.toString(),
               style: Theme.of(context).textTheme.headline3,
             ),
           ),
+          Align(
+            alignment: Alignment.centerRight,
+            child: IconButton(
+              alignment: Alignment.centerRight,
+              onPressed: () {},
+              icon: const Icon(
+                Icons.arrow_right_alt_rounded,
+                size: 33,
+                color: Colors.blue,
+              ),
+            ),
+          )
         ],
       ),
     );

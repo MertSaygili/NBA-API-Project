@@ -2,7 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:nba_api/model/player_model.dart';
 import 'package:nba_api/model/team_model.dart';
 import 'package:nba_api/service/service.dart';
-import 'package:nba_api/widgets/row_card.dart';
+import 'package:nba_api/widgets/team_card.dart';
 
 import '../constants/constants.dart';
 
@@ -48,7 +48,7 @@ class _StartingPageViewState extends State<StartingPageView>
             )
           : Padding(
               padding: PaddingItems().paddingPage,
-              child: CustomRowCard(teams: _teams),
+              child: CustomTeamCard(teams: _teams),
             ),
     );
   }
