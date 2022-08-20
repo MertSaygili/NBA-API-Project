@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:nba_api/model/player_model.dart';
 import 'package:nba_api/model/team_model.dart';
 import 'package:nba_api/service/service.dart';
+import 'package:nba_api/widgets/row_card.dart';
 
 import '../widgets/team_logo_image.dart';
 
@@ -12,9 +13,11 @@ class StartingPageView extends StatefulWidget {
   State<StartingPageView> createState() => _StartingPageViewState();
 }
 
-class _StartingPageViewState extends State<StartingPageView> {
+class _StartingPageViewState extends State<StartingPageView>
+    with TickerProviderStateMixin {
   List<TeamModel> _teams = [];
   List<PlayerModel>? _players;
+  bool _isLoading = true;
 
   @override
   void initState() {
@@ -25,31 +28,27 @@ class _StartingPageViewState extends State<StartingPageView> {
   Future<void> getItems() async {
     _teams = await ServiceApi.getTeamData();
     _players = await ServiceApi.getPlayerData();
+    _changeLoading();
+  }
+
+  void _changeLoading() {
+    setState(() {
+      _isLoading = !_isLoading;
+    });
   }
 
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: AppBar(),
-      body: ListView.builder(
-          itemCount: _teams.length,
-          itemBuilder: (context, index) {
-            return SizedBox(
-              height: 150,
-              child: ListTile(
-                title: Container(
-                    alignment: Alignment.centerLeft,
-                    height: 100,
-                    width: 100,
-                    color: Colors.red,
-                    child: CustomImageAsset(
-                      team: _teams[index],
-                      logoMainPath: 'assets/team_logos/',
-                    )),
-                subtitle: Text(_teams[index].conference ?? ''),
+      body: _isLoading
+          ? Center(
+              child: Container(
+                child: const CircularProgressIndicator(
+                  color: Colors.red,
+                ),
               ),
-            );
-          }),
+            )
+          : CustomRowCard(teams: _teams),
     );
   }
 }

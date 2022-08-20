@@ -38,6 +38,8 @@ class _CustomImageAssetState extends State<CustomImageAsset> {
   Widget build(BuildContext context) {
     return Image.asset(
       getPath(),
+      height: 100,
+      width: 100,
       fit: BoxFit.fill,
     );
   }
