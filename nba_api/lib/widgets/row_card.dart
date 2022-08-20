@@ -28,7 +28,16 @@ class _CustomRowCardState extends State<CustomRowCard> {
         return Card(
           child: Row(
             mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-            children: const [],
+            children: [
+              Align(
+                alignment: Alignment.centerLeft,
+                child: CustomImageAsset(
+                  team: widget.teams[index],
+                  logoMainPath: _logoMainPath,
+                ),
+              ),
+              Text(widget.teams[index].full_name.toString()),
+            ],
           ),
         );
       },
