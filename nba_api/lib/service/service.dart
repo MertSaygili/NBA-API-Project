@@ -1,13 +1,16 @@
-// ignore_for_file: no_leading_underscores_for_local_identifiers
+// ignore_for_file: no_leading_underscores_for_local_identifiers, non_constant_identifier_names
 
 import 'dart:convert';
 
+import 'package:flutter_dotenv/flutter_dotenv.dart';
 import 'package:http/http.dart' as http;
 import 'package:nba_api/model/player_model.dart';
 
 import '../model/team_model.dart';
 
 class ServiceApi {
+  static String api_key = dotenv.env['X-RapidAPI-Key'] ?? '';
+
   static Future<List<TeamModel>> getTeamData() async {
     var uri = Uri.https(
       'free-nba.p.rapidapi.com',
@@ -16,7 +19,7 @@ class ServiceApi {
     );
 
     final response = await http.get(uri, headers: {
-      "X-RapidAPI-Key": "1112b8b673msha512558d29221d4p1a7ec5jsn8e9aaa5cd663",
+      "X-RapidAPI-Key": api_key,
       "X-RapidAPI-Host": "free-nba.p.rapidapi.com",
       "useQueryString": "true"
     });
@@ -39,7 +42,7 @@ class ServiceApi {
     );
 
     final response = await http.get(uri, headers: {
-      "X-RapidAPI-Key": "1112b8b673msha512558d29221d4p1a7ec5jsn8e9aaa5cd663",
+      "X-RapidAPI-Key": api_key,
       "X-RapidAPI-Host": "free-nba.p.rapidapi.com",
       "useQueryString": 'true'
     });

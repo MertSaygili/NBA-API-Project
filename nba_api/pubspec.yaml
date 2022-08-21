@@ -33,6 +33,10 @@ dependencies:
   # https
   http: ^0.13.5
 
+  #.env
+  flutter_dotenv: ^5.0.2
+
+
 
   # The following adds the Cupertino Icons font to your application.
   # Use with the CupertinoIcons class for iOS style icons.
@@ -64,6 +68,9 @@ flutter:
 
   # To add assets to your application, add an assets section, like this:
   assets:
+
+    # env file
+    - .env
 
     # Login Image
     - assets/login_image/nba_logo.png
