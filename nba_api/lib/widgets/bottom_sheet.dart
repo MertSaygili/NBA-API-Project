@@ -17,6 +17,10 @@ class CustomSheetModel extends StatefulWidget {
 }
 
 class _CustomSheetModelState extends State<CustomSheetModel> {
+  final OutlineInputBorder _bottomSheetBorder = const OutlineInputBorder(
+    borderRadius: BorderRadius.vertical(top: Radius.circular(20)),
+  );
+
   @override
   Widget build(BuildContext context) {
     return IconButton(
@@ -25,65 +29,85 @@ class _CustomSheetModelState extends State<CustomSheetModel> {
       icon: IconItems().iconNext,
       onPressed: () {
         showModalBottomSheet(
-            shape: const OutlineInputBorder(
-              borderRadius: BorderRadius.vertical(top: Radius.circular(20)),
-            ),
+            shape: _bottomSheetBorder,
             isScrollControlled: true,
             context: context,
             builder: (context) {
               return SizedBox(
-                // height: MediaQuery.of(context).size.height * 0.6,
                 child: Column(
                   mainAxisSize: MainAxisSize.min,
                   children: [
-                    Align(
-                      alignment: Alignment.topRight,
-                      child: IconButton(
-                        padding: EdgeInsets.zero,
-                        onPressed: () {
-                          Navigator.of(context).pop();
-                        },
-                        icon: IconItems().iconClose,
-                      ),
-                    ),
+                    _closeSheetButton(context),
                     Padding(padding: PaddingItems().paddingBottomSheet),
-                    SizedBox(
-                      child: CustomImageAsset(
-                        team: widget.team,
-                        logoMainPath: widget.logoMainPath,
-                      ),
-                    ),
-                    ListTile(
-                      contentPadding: PaddingItems().paddingBottomSheet,
-                      title: Text(
-                        widget.team.full_name.toString(),
-                        style: Theme.of(context).textTheme.headline2,
-                      ),
-                      subtitle: Text(
-                        'Conference: ${widget.team.conference.toString()}\nCity: ${widget.team.city.toString()}',
-                        style: Theme.of(context).textTheme.headline3,
-                      ),
-                    ),
-                    Padding(
-                      padding: const EdgeInsets.all(8.0),
-                      child: Align(
-                        alignment: Alignment.bottomRight,
-                        child: ElevatedButton(
-                          style: ElevatedButton.styleFrom(
-                            primary: Colors.transparent,
-                            onSurface: Colors.transparent,
-                            onPrimary: Colors.black,
-                          ),
-                          onPressed: () {},
-                          child: const Icon(Icons.more_horiz),
-                        ),
-                      ),
-                    )
+                    _teamLogo(context),
+                    _teamInformation(context),
+                    _playerInformationButton()
                   ],
                 ),
               );
             });
       },
+    );
+  }
+
+  Padding _playerInformationButton() {
+    return Padding(
+      padding: PaddingItems().paddingImage,
+      child: Align(
+        alignment: Alignment.bottomRight,
+        child: ElevatedButton(
+          onPressed: () {},
+          child: _buttonText(),
+        ),
+      ),
+    );
+  }
+
+  Align _closeSheetButton(BuildContext context) {
+    return Align(
+      alignment: Alignment.topRight,
+      child: IconButton(
+        padding: EdgeInsets.zero,
+        onPressed: () {
+          Navigator.of(context).pop();
+        },
+        icon: IconItems().iconClose,
+      ),
+    );
+  }
+
+  SizedBox _teamLogo(BuildContext context) {
+    return SizedBox(
+      child: CustomImageAsset(
+        team: widget.team,
+        logoMainPath: widget.logoMainPath,
+      ),
+    );
+  }
+
+  ListTile _teamInformation(BuildContext context) {
+    return ListTile(
+      contentPadding: PaddingItems().paddingBottomSheet,
+      title: Text(
+        widget.team.full_name.toString(),
+        style: Theme.of(context).textTheme.headline2,
+      ),
+      subtitle: Text(
+        'Conference: ${widget.team.conference.toString()}\nCity: ${widget.team.city.toString()}',
+        style: Theme.of(context).textTheme.headline3,
+      ),
+    );
+  }
+
+  Row _buttonText() {
+    return Row(
+      mainAxisSize: MainAxisSize.min,
+      mainAxisAlignment: MainAxisAlignment.end,
+      children: const [
+        Text('Players'),
+        SizedBox(width: 10),
+        Icon(Icons.arrow_circle_right_outlined),
+      ],
     );
   }
 }
