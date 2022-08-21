@@ -42,6 +42,7 @@ class _CustomSheetModelState extends State<CustomSheetModel> {
       icon: IconItems().iconNextUp,
       onPressed: () {
         showModalBottomSheet(
+            isDismissible: false,
             shape: _bottomSheetBorder,
             isScrollControlled: true,
             context: context,

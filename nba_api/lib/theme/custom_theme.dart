@@ -32,6 +32,16 @@ class CustomTheme {
           fontWeight: FontWeight.w500,
           color: _colors.colorWhite,
         ),
+        subtitle1: TextStyle(
+          fontSize: _fontSizes.fontSizeMedium,
+          fontWeight: FontWeight.w500,
+          color: _colors.colorBlack,
+        ),
+        subtitle2: TextStyle(
+          fontSize: _fontSizes.fontSizeMedium,
+          fontWeight: FontWeight.w100,
+          color: _colors.colorBlack,
+        ),
       ),
     );
   }

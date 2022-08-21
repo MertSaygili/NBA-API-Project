@@ -3,6 +3,7 @@ import 'package:flutter/material.dart';
 
 // font sizes
 class FontSizes {
+  final double fontSizeSmall = 13;
   final double fontSizeMedium = 16;
   final double fontSizeLarge = 28;
 
@@ -40,8 +41,13 @@ class AllColors {
 
 // Padding Classes
 class PaddingItems {
-  final EdgeInsets paddingPage = EdgeInsets.only(
-    top: PaddingValues().paddingVerticalNormal,
+  final EdgeInsets paddingPage2x = EdgeInsets.symmetric(
+    vertical: PaddingValues().paddingVerticalNormal,
+    horizontal: PaddingValues().paddingNormal2X,
+  );
+
+  final EdgeInsets paddingPage = EdgeInsets.symmetric(
+    vertical: PaddingValues().paddingVerticalNormal,
   );
 
   final EdgeInsets paddingCard = EdgeInsets.symmetric(
