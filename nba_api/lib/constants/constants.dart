@@ -6,6 +6,7 @@ class FontSizes {
   final double fontSizeMedium = 16;
   final double fontSizeLarge = 28;
 
+  final double iconSizeNormal = 24;
   final double iconSizeBig = 35;
 }
 
@@ -15,6 +16,12 @@ class IconItems {
     Icons.arrow_circle_up_outlined,
     size: FontSizes().iconSizeBig,
     color: AllColors().colorBlue,
+  );
+
+  final Icon iconClose = Icon(
+    Icons.close_rounded,
+    size: FontSizes().iconSizeNormal,
+    color: AllColors().colorBlack,
   );
 }
 
@@ -46,7 +53,7 @@ class PaddingItems {
 
   final EdgeInsets paddingBottomSheet = EdgeInsets.symmetric(
     horizontal: PaddingValues().paddingNormal,
-    vertical: PaddingValues().paddingNormal2X,
+    vertical: PaddingValues().paddingSmall,
   );
 }
 

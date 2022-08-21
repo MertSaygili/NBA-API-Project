@@ -3,6 +3,7 @@ import 'package:nba_api/model/team_model.dart';
 import 'package:nba_api/widgets/team_logo_image.dart';
 
 import '../constants/constants.dart';
+import 'bottom_sheet.dart';
 
 class CustomTeamCard extends StatefulWidget {
   const CustomTeamCard({Key? key, required this.teams}) : super(key: key);
@@ -53,40 +54,11 @@ class _CustomTeamCardState extends State<CustomTeamCard> {
           ),
           Align(
             alignment: Alignment.centerRight,
-            child: IconButton(
-              padding: PaddingItems().paddingIcon,
-              alignment: Alignment.centerRight,
-              icon: IconItems().iconNext,
-              onPressed: () {
-                showModalBottomSheet(
-                    context: context,
-                    builder: (context) {
-                      return Column(
-                        mainAxisAlignment: MainAxisAlignment.start,
-                        children: [
-                          SizedBox(
-                            child: CustomImageAsset(
-                              team: widget.teams[index],
-                              logoMainPath: _logoMainPath,
-                            ),
-                          ),
-                          ListTile(
-                            contentPadding: PaddingItems().paddingBottomSheet,
-                            title: Text(
-                              widget.teams[index].full_name.toString(),
-                              style: Theme.of(context).textTheme.headline2,
-                            ),
-                            subtitle: Text(
-                              'Conference: ${widget.teams[index].conference.toString()}\nCity: ${widget.teams[index].city.toString()}',
-                              style: Theme.of(context).textTheme.headline3,
-                            ),
-                          ),
-                        ],
-                      );
-                    });
-              },
+            child: CustomSheetModel(
+              team: widget.teams[index],
+              logoMainPath: _logoMainPath,
             ),
-          )
+          ),
         ],
       ),
     );
