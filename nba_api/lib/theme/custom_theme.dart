@@ -26,6 +26,12 @@ class CustomTheme {
           fontSize: _fontSizes.fontSizeMedium,
           fontWeight: FontWeight.bold,
         ),
+        button: TextStyle(
+          fontSize: _fontSizes.fontSizeMedium,
+          letterSpacing: 0,
+          fontWeight: FontWeight.w500,
+          color: _colors.colorWhite,
+        ),
       ),
     );
   }

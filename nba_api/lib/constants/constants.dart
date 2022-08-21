@@ -12,7 +12,7 @@ class FontSizes {
 
 // icons
 class IconItems {
-  final Icon iconNext = Icon(
+  final Icon iconNextUp = Icon(
     Icons.arrow_circle_up_outlined,
     size: FontSizes().iconSizeBig,
     color: AllColors().colorBlue,
@@ -23,11 +23,18 @@ class IconItems {
     size: FontSizes().iconSizeNormal,
     color: AllColors().colorBlack,
   );
+
+  final Icon iconNextRight = Icon(
+    Icons.arrow_circle_right_outlined,
+    size: FontSizes().iconSizeBig,
+    color: AllColors().colorWhite,
+  );
 }
 
 // colors
 class AllColors {
   final Color colorBlack = Colors.black;
+  final Color colorWhite = Colors.white;
   final Color colorBlue = Colors.blue;
 }
 

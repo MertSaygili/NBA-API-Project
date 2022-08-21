@@ -1,4 +1,6 @@
 import 'package:flutter/material.dart';
+import 'package:nba_api/model/player_model.dart';
+import 'package:nba_api/view/players_page_view.dart';
 import 'package:nba_api/widgets/team_logo_image.dart';
 
 import '../constants/constants.dart';
@@ -6,10 +8,14 @@ import '../model/team_model.dart';
 
 class CustomSheetModel extends StatefulWidget {
   const CustomSheetModel(
-      {Key? key, required this.team, required this.logoMainPath})
+      {Key? key,
+      required this.team,
+      required this.logoMainPath,
+      required this.players})
       : super(key: key);
 
   final TeamModel team;
+  final List<PlayerModel> players;
   final String logoMainPath;
 
   @override
@@ -20,13 +26,20 @@ class _CustomSheetModelState extends State<CustomSheetModel> {
   final OutlineInputBorder _bottomSheetBorder = const OutlineInputBorder(
     borderRadius: BorderRadius.vertical(top: Radius.circular(20)),
   );
+  final RoundedRectangleBorder _playersRoundedBorder = RoundedRectangleBorder(
+    borderRadius: BorderRadius.circular(10),
+  );
+  final String _textPlayers = 'Players';
+  final String _textConference = 'Conference';
+  final String _textCity = 'City';
+  final double _widthTen = 10;
 
   @override
   Widget build(BuildContext context) {
     return IconButton(
       padding: PaddingItems().paddingIcon,
       alignment: Alignment.centerRight,
-      icon: IconItems().iconNext,
+      icon: IconItems().iconNextUp,
       onPressed: () {
         showModalBottomSheet(
             shape: _bottomSheetBorder,
@@ -47,19 +60,6 @@ class _CustomSheetModelState extends State<CustomSheetModel> {
               );
             });
       },
-    );
-  }
-
-  Padding _playerInformationButton() {
-    return Padding(
-      padding: PaddingItems().paddingImage,
-      child: Align(
-        alignment: Alignment.bottomRight,
-        child: ElevatedButton(
-          onPressed: () {},
-          child: _buttonText(),
-        ),
-      ),
     );
   }
 
@@ -93,8 +93,24 @@ class _CustomSheetModelState extends State<CustomSheetModel> {
         style: Theme.of(context).textTheme.headline2,
       ),
       subtitle: Text(
-        'Conference: ${widget.team.conference.toString()}\nCity: ${widget.team.city.toString()}',
+        '$_textConference: ${widget.team.conference.toString()}\n$_textCity: ${widget.team.city.toString()}',
         style: Theme.of(context).textTheme.headline3,
+      ),
+    );
+  }
+
+  Padding _playerInformationButton() {
+    return Padding(
+      padding: PaddingItems().paddingBottomSheet,
+      child: Align(
+        alignment: Alignment.bottomRight,
+        child: ElevatedButton(
+          style: ElevatedButton.styleFrom(shape: _playersRoundedBorder),
+          onPressed: () {
+            _openPlayersPage();
+          },
+          child: _buttonText(),
+        ),
       ),
     );
   }
@@ -103,11 +119,22 @@ class _CustomSheetModelState extends State<CustomSheetModel> {
     return Row(
       mainAxisSize: MainAxisSize.min,
       mainAxisAlignment: MainAxisAlignment.end,
-      children: const [
-        Text('Players'),
-        SizedBox(width: 10),
-        Icon(Icons.arrow_circle_right_outlined),
+      children: [
+        Text(_textPlayers, style: Theme.of(context).textTheme.button),
+        SizedBox(width: _widthTen),
+        IconItems().iconNextRight,
       ],
+    );
+  }
+
+  void _openPlayersPage() {
+    Navigator.of(context).push(
+      MaterialPageRoute<void>(
+        builder: (BuildContext context) => PlayersPageView(
+          teamName: widget.team.full_name.toString(),
+          players: widget.players,
+        ),
+      ),
     );
   }
 }

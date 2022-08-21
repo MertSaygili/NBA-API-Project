@@ -16,7 +16,7 @@ class StartingPageView extends StatefulWidget {
 class _StartingPageViewState extends State<StartingPageView>
     with TickerProviderStateMixin {
   List<TeamModel> _teams = [];
-  List<PlayerModel>? _players;
+  List<PlayerModel> _players = [];
   bool _isLoading = true;
 
   @override
@@ -48,7 +48,10 @@ class _StartingPageViewState extends State<StartingPageView>
             )
           : Padding(
               padding: PaddingItems().paddingPage,
-              child: CustomTeamCard(teams: _teams),
+              child: CustomTeamCard(
+                teams: _teams,
+                players: _players,
+              ),
             ),
     );
   }
