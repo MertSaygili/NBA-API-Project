@@ -13,7 +13,7 @@ class ServiceApi {
 
   static Future<List<TeamModel>> getTeamData() async {
     var uri = Uri.https(
-      'free-nba.p.rapidapi.com',
+      'free-nba.p.rapidMapi.com',
       '/teams',
       {"page": "0"},
     );
